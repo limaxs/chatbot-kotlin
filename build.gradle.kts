@@ -8,6 +8,8 @@ plugins {
 	kotlin("plugin.spring") version "1.2.71"
 }
 
+apply(plugin = "io.spring.dependency-management")
+
 group = "co.id.test.bintang"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
@@ -33,12 +35,15 @@ tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "1.8"
+		includeRuntime = true
+
 	}
 }
 
 
 
 tasks.getByName<BootJar>("bootJar") {
-	mainClassName = "co.id.test.bintang.chatbot.ChatbotApplication"
+	mainClassName = "co.id.test.bintang.chatbot.ChatbotApplicationKt"
 }
+
 
